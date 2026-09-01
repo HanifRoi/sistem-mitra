@@ -52,4 +52,12 @@ class MitraController extends Controller
 
        return redirect('/mitra');
     }
+
+    public function destroy($id)
+    {
+        $mitra = Mitra::findOrFail($id);
+        $mitra->delete();
+
+        return redirect('/mitra');
+    }
 }
