@@ -25,6 +25,11 @@
                 <td>{{ $baris->no_telp }}</td>
                 <td>
                     <a href="/mitra/{{ $baris->id }}/edit"><button>Edit</button></a>
+                    <form action="/mitra/{{ $baris->id }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
