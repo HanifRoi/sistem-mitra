@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/mitra', [MitraController::class, 'index']);
+Route::get('/mitra/create', [MitraController::class, 'create']);
+Route::post('/mitra', [MitraController::class, 'store']);
