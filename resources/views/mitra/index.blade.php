@@ -6,6 +6,11 @@
     <body>
         <h2>Daftar Mitra Instansi</h2>
         <a href="/mitra/create"><button>Tambah Mitra</button></a><br><br>
+        @if (session('sukses'))
+            <div style="color: green;">
+                {{ session('sukses') }}
+            </div>
+        @endif
         <table border="1" cellpadding="10">
             <tr>
                 <th>No</th>
