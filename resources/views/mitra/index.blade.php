@@ -11,6 +11,14 @@
                 {{ session('sukses') }}
             </div>
         @endif
+        <form action="/mitra" method="GET" style="margin-bottom: 15px;">
+            <input type="text" name="cari" placeholder="Cari...." value="{{ $cari }}" style="padding: 5px; width: 250px;">
+            <button type="submit" style="padding: 5px 10px;">Cari</button>
+
+            @if ($cari)
+            <a href="/mitra"><button type="button" style="padding: 5px 10px;">Reset</button></a>
+            @endif
+        </form>
         <table border="1" cellpadding="10">
             <tr>
                 <th>No</th>

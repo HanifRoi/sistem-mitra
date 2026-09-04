@@ -7,10 +7,19 @@ use App\Models\Mitra;
 
 class MitraController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data_mitra = Mitra::all();
-        return view('mitra.index', compact('data_mitra'));
+        
+        $cari = $request->input('cari');
+
+        $data_mitra = Mitra::when($cari, function ($query) use ($cari) {
+                return $query->where('nama_mitra', 'like', '%'. $cari . '%')
+                             ->orWhere('kategori_usaha', 'like', '%'. $cari . '%')
+                             ->orWhere('alamat', 'like', '%'. $cari . '%')
+                             ->orWhere('no_telp', 'like', '%'. $cari . '%');
+            })->get();
+
+            return view('mitra.index', compact('data_mitra', 'cari'));
     }
 
     public function create()
