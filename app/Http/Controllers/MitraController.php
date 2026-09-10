@@ -17,7 +17,7 @@ class MitraController extends Controller
                              ->orWhere('kategori_usaha', 'like', '%'. $cari . '%')
                              ->orWhere('alamat', 'like', '%'. $cari . '%')
                              ->orWhere('no_telp', 'like', '%'. $cari . '%');
-            })->get();
+            })->paginate(3)->appends($request->all());
 
             return view('mitra.index', compact('data_mitra', 'cari'));
     }
@@ -36,7 +36,7 @@ class MitraController extends Controller
             'nama_mitra' => 'required|string|max:255|min:3',
             'kategori_usaha' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|numeric|max:15',
+            'no_telp' => 'required|string|max:15',
         ],
         [
             'nama_mitra.required' => 'Nama Mitra harus diisi.',
